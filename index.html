@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shashwat & Pallavi - Wedding Countdown</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff0f0, #ffe6f7);
+      color: #3d2b2b;
+      overflow: hidden;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      padding: 15px 10px;
+      background: linear-gradient(to right, #f58aae, #fad1c4);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2em;
+      font-weight: 700;
+      font-family: cursive;
+      color:whitesmoke;
+    }
+
+    .subtitle {
+      font-size: 0.9em;
+      margin-top: 4px;
+    }
+
+    .main-content {
+      position: absolute;
+      top: 80px;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 10px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .countdown div {
+      background: #fff;
+      border: 2px solid #ffb3c6;
+      border-radius: 16px;
+      padding: 10px 14px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      min-width: 65px;
+    }
+
+    .countdown span {
+      font-size: 1.4em;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 0.8em;
+      color: #a55555;
+    }
+
+    .zoom-image img {
+      width: 180px;
+      border-radius: 16px;
+      border: 3px solid #ffc2d1;
+      box-shadow: 0 8px 15px rgba(244, 133, 133, 0.1);
+      animation: zoomInOut 4s ease-in-out infinite;
+    }
+
+    .message {
+      font-size: 0.9em;
+      color: #800040;
+    }
+
+    @keyframes zoomInOut {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .floaty {
+      position: absolute;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      animation: floaty 10s linear infinite;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    @keyframes floaty {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-120vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 2.5em; }
+      .zoom-image img { width: 220px; }
+      .message { font-size: 1em; }
+    }
+
+    /* Music Button */
+    .music-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #fe768f;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      cursor: pointer;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Shashwat & Pallavi</h1>
+    <p class="subtitle">Wedding Countdown Begins</p>
+  </header>
+
+  <button class="music-btn" onclick="toggleMusic()">🔊 Play Music</button>
+
+  <div class="main-content">
+    <div class="countdown">
+      <div><span id="days">0</span><div class="label">Days</div></div>
+      <div><span id="hours">0</span><div class="label">Hours</div></div>
+      <div><span id="minutes">0</span><div class="label">Minutes</div></div>
+      <div><span id="seconds">0</span><div class="label">Seconds</div></div>
+    </div>
+
+    <div class="zoom-image">
+      <img src="Image/img1.png" alt="Shashwat & Pallavi" />
+    </div>
+
+    <div class="message">
+      <p>We're Getting Married! Countdown to Our Big Day 26th Nov💍🌸</p>
+    </div>
+  </div>
+
+  
+  <audio id="bgmusic">
+    <source src="Song/song.mp3" type="audio/mpeg" />
+    
+  </audio>
+
+  <script>
+    
+    const weddingDate = new Date(2025, 10, 26, 23, 0, 0); // Nov 26, 2025 @ 11 PM
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      const seconds = Math.floor((diff / 1000) % 60);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    
+    const emojis = [ "❤️","🌻", "💖", "✨", "🌟"];
+const emojiCount = 100;
+
+for (let i = 0; i < emojiCount; i++) {
+  const span = document.createElement("span");
+  span.className = "floaty";
+  span.style.left = `${Math.random() * 100}vw`;
+  span.style.animationDuration = `${8 + Math.random() * 4}s`;
+
+ 
+  const startY = Math.random() * window.innerHeight;
+  span.style.top = `${startY}px`;
+
+  span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  document.body.appendChild(span);
+}
+
+
+    
+    const bgm = document.getElementById("bgmusic");
+    const btn = document.querySelector(".music-btn");
+
+    function toggleMusic() {
+      if (bgm.paused) {
+        bgm.play();
+        btn.textContent = "🔇 Stop Music";
+      } else {
+        bgm.pause();
+        btn.textContent = "🔊 Play Music";
+      }
+    }
+
+    
+    document.addEventListener("click", () => {
+      if (bgm.paused) {
+        bgm.play();
+        btn.textContent = "🔇 Stop Music";
+      }
+    }, { once: true });
+  </script>
+</body>
+</html>
