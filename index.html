@@ -130,10 +130,10 @@
       .message { font-size: 1em; }
     }
 
-    /* Music Button */
+    /* Music Button - Bottom Right Corner */
     .music-btn {
       position: absolute;
-      top: 10px;
+      bottom: 10px;
       right: 10px;
       background: #fe768f;
       color: white;
@@ -171,14 +171,11 @@
     </div>
   </div>
 
-  
   <audio id="bgmusic">
     <source src="Song/song.mp3" type="audio/mpeg" />
-    
   </audio>
 
   <script>
-    
     const weddingDate = new Date(2025, 10, 26, 23, 0, 0); // Nov 26, 2025 @ 11 PM
 
     function updateCountdown() {
@@ -199,26 +196,20 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    
     const emojis = [ "❤️","🌻", "💖", "✨", "🌟"];
-const emojiCount = 100;
+    const emojiCount = 100;
 
-for (let i = 0; i < emojiCount; i++) {
-  const span = document.createElement("span");
-  span.className = "floaty";
-  span.style.left = `${Math.random() * 100}vw`;
-  span.style.animationDuration = `${8 + Math.random() * 4}s`;
+    for (let i = 0; i < emojiCount; i++) {
+      const span = document.createElement("span");
+      span.className = "floaty";
+      span.style.left = `${Math.random() * 100}vw`;
+      span.style.animationDuration = `${8 + Math.random() * 4}s`;
+      const startY = Math.random() * window.innerHeight;
+      span.style.top = `${startY}px`;
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      document.body.appendChild(span);
+    }
 
- 
-  const startY = Math.random() * window.innerHeight;
-  span.style.top = `${startY}px`;
-
-  span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-  document.body.appendChild(span);
-}
-
-
-    
     const bgm = document.getElementById("bgmusic");
     const btn = document.querySelector(".music-btn");
 
@@ -232,7 +223,6 @@ for (let i = 0; i < emojiCount; i++) {
       }
     }
 
-    
     document.addEventListener("click", () => {
       if (bgm.paused) {
         bgm.play();
