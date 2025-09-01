@@ -3,48 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shashwat & Pallavi - Wedding Countdown</title>
+  <title>Shashwat & Pallavi - Countdown</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
       height: 100%;
       width: 100%;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #fff0f0, #ffe6f7);
+      background: linear-gradient(135deg, #fff0f5, #ffe6eb, #fff0f5);
+      background-size: 400% 400%;
+      animation: romanticBG 15s ease infinite;
       color: #3d2b2b;
       overflow: hidden;
       position: relative;
     }
 
+    @keyframes romanticBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header {
       text-align: center;
       padding: 15px 10px;
-      background: linear-gradient(to right, #f58aae, #fad1c4);
+      background: linear-gradient(to right, #ff77a4, #ff9ec3);
       color: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       z-index: 2;
     }
 
     h1 {
-      font-size: 2em;
+      font-size: 2.4em;
       font-weight: 700;
       font-family: cursive;
-      color:whitesmoke;
+      color: #fff;
     }
 
     .subtitle {
-      font-size: 0.9em;
+      font-size: 1em;
       margin-top: 4px;
+      color: #ffe6ef;
     }
 
     .main-content {
       position: absolute;
-      top: 80px;
+      top: 90px;
       bottom: 10px;
       left: 0;
       right: 0;
@@ -59,100 +64,106 @@
 
     .countdown {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
     .countdown div {
       background: #fff;
-      border: 2px solid #ffb3c6;
-      border-radius: 16px;
-      padding: 10px 14px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      min-width: 65px;
+      border: 2px solid #ff80aa;
+      border-radius: 20px;
+      padding: 12px 16px;
+      box-shadow: 0 6px 15px rgba(255, 105, 155, 0.2);
+      min-width: 70px;
+      transition: transform 0.3s ease;
+    }
+
+    .countdown div:hover {
+      transform: scale(1.1);
     }
 
     .countdown span {
-      font-size: 1.4em;
-      color: #e91e63;
+      font-size: 1.6em;
+      color: #fa77a7;
       font-weight: bold;
     }
 
     .label {
       font-size: 0.8em;
-      color: #a55555;
+      color: #b0577c;
     }
 
     .zoom-image img {
-      width: 180px;
-      border-radius: 16px;
-      border: 3px solid #ffc2d1;
-      box-shadow: 0 8px 15px rgba(244, 133, 133, 0.1);
+      width: 200px;
+      border-radius: 20px;
+      border: 4px solid #ff99ac;
+      box-shadow: 0 8px 20px rgba(244, 67, 94, 0.3);
       animation: zoomInOut 4s ease-in-out infinite;
     }
 
     .message {
-      font-size: 0.9em;
-      color: #800040;
+      font-size: 1.1em;
+      color: #b83268;
+      margin-top: 8px;
+      font-style: italic;
     }
 
     @keyframes zoomInOut {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.07); }
     }
 
     .floaty {
       position: absolute;
-      font-size: 20px;
-      width: 20px;
-      height: 20px;
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
       pointer-events: none;
-      animation: floaty 10s linear infinite;
-      opacity: 0.7;
+      animation: floaty 12s linear infinite;
+      opacity: 0.8;
       z-index: 1;
     }
 
     @keyframes floaty {
-      0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 0.5;
-      }
-      100% {
-        transform: translateY(-120vh) translateX(20px);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh) translateX(0); opacity: 0.7; }
+      100% { transform: translateY(-120vh) translateX(40px); opacity: 0; }
     }
 
     @media (min-width: 768px) {
-      h1 { font-size: 2.5em; }
-      .zoom-image img { width: 220px; }
-      .message { font-size: 1em; }
+      h1 { font-size: 2.8em; }
+      .zoom-image img { width: 240px; }
+      .message { font-size: 1.2em; }
     }
 
-    /* Music Button - Bottom Right Corner */
     .music-btn {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: #fe768f;
+      bottom: 15px;
+      right: 15px;
+      background: radial-gradient(circle at top left, #e91e63, #ff758c);
       color: white;
       border: none;
-      padding: 8px 14px;
-      border-radius: 10px;
-      font-size: 0.9em;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 1.2em;
       cursor: pointer;
       z-index: 3;
+      box-shadow: 0 0 15px rgba(233, 30, 99, 0.7);
+      transition: transform 0.3s ease;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Shashwat & Pallavi</h1>
-    <p class="subtitle">Wedding Countdown Begins</p>
+    <h1>❤️ Shashwat & Pallavi❤️ </h1>
+    <p class="subtitle">🌸 Our Story Begins 🌸</p>
   </header>
 
-  <button class="music-btn" onclick="toggleMusic()">🔊 Play Music</button>
+  <button class="music-btn" onclick="toggleMusic()">🎶</button>
 
   <div class="main-content">
     <div class="countdown">
@@ -167,7 +178,7 @@
     </div>
 
     <div class="message">
-      <p>We're Getting Married! Countdown to Our Big Day 26th Nov💍🌸</p>
+      <p id="event-message">Loading...</p>
     </div>
   </div>
 
@@ -176,12 +187,28 @@
   </audio>
 
   <script>
-    const weddingDate = new Date(2025, 10, 26, 23, 0, 0); // Nov 26, 2025 @ 11 PM
+    const weddingDate = new Date(2025, 10, 26, 23, 0, 0);
+    const msgElement = document.getElementById("event-message");
 
     function updateCountdown() {
       const now = new Date();
-      const diff = weddingDate - now;
+      let targetDate = new Date(weddingDate);
 
+      if (now >= weddingDate) {
+        let yearsCompleted = now.getFullYear() - weddingDate.getFullYear();
+        const anniversaryThisYear = new Date(now.getFullYear(), weddingDate.getMonth(), weddingDate.getDate(), weddingDate.getHours(), weddingDate.getMinutes());
+        if (now > anniversaryThisYear) {
+          targetDate.setFullYear(now.getFullYear() + 1);
+          yearsCompleted += 1;
+        } else {
+          targetDate = anniversaryThisYear;
+        }
+        msgElement.textContent = `🌹❤️ ${yearsCompleted - 1} Years of Love! Counting to our ${yearsCompleted} Year Anniversary ❤️🌹`;
+      } else {
+        msgElement.textContent = "💍 We're Getting Married! Countdown to Our Big Day 🌹💖";
+      }
+
+      const diff = targetDate - now;
       const seconds = Math.floor((diff / 1000) % 60);
       const minutes = Math.floor((diff / 1000 / 60) % 60);
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -196,37 +223,34 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    const emojis = [ "❤️","🌻", "💖", "✨", "🌟"];
-    const emojiCount = 100;
-
-    for (let i = 0; i < emojiCount; i++) {
+    // Floating roses & hearts
+    const emojis = ["🌹","❤️","💖","💕","🌹","❤️"];
+    for (let i = 0; i < 90; i++) {
       const span = document.createElement("span");
       span.className = "floaty";
       span.style.left = `${Math.random() * 100}vw`;
-      span.style.animationDuration = `${8 + Math.random() * 4}s`;
-      const startY = Math.random() * window.innerHeight;
-      span.style.top = `${startY}px`;
+      span.style.animationDuration = `${8 + Math.random() * 6}s`;
+      span.style.top = `${Math.random() * window.innerHeight}px`;
       span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       document.body.appendChild(span);
     }
 
+    // Music control
     const bgm = document.getElementById("bgmusic");
     const btn = document.querySelector(".music-btn");
-
     function toggleMusic() {
       if (bgm.paused) {
         bgm.play();
-        btn.textContent = "🔇 Stop Music";
+        btn.textContent = "🔇";
       } else {
         bgm.pause();
-        btn.textContent = "🔊 Play Music";
+        btn.textContent = "🎶";
       }
     }
-
     document.addEventListener("click", () => {
       if (bgm.paused) {
         bgm.play();
-        btn.textContent = "🔇 Stop Music";
+        btn.textContent = "🔇";
       }
     }, { once: true });
   </script>
