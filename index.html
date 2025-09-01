@@ -279,16 +279,16 @@
     function toggleMusic() {
       if (bgm.paused) {
         bgm.play();
-        btn.textContent = "🔇";
+        btn.textContent = "🎶";
       } else {
         bgm.pause();
-        btn.textContent = "🎶";
+        btn.textContent = "🔇";
       }
     }
     document.addEventListener("click", () => {
       if (bgm.paused) {
         bgm.play();
-        btn.textContent = "🔇";
+        btn.textContent = "🎶";
       }
     }, { once: true });
   </script>
