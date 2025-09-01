@@ -136,6 +136,44 @@
       .message { font-size: 1.2em; }
     }
 
+    /* 📱 Mobile screens only */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .subtitle {
+        font-size: 0.9em;
+      }
+
+      .countdown {
+        gap: 8px;
+      }
+
+      .countdown div {
+        padding: 8px 10px;
+        min-width: 60px;
+        border-radius: 14px;
+      }
+
+      .countdown span {
+        font-size: 1.2em;
+      }
+
+      .label {
+        font-size: 0.7em;
+      }
+
+      .zoom-image img {
+        width: 150px;
+        border-width: 3px;
+      }
+
+      .message {
+        font-size: 1em;
+      }
+    }
+
     .music-btn {
       position: absolute;
       bottom: 15px;
@@ -170,7 +208,7 @@
       <div><span id="days">0</span><div class="label">Days</div></div>
       <div><span id="hours">0</span><div class="label">Hours</div></div>
       <div><span id="minutes">0</span><div class="label">Minutes</div></div>
-      <div><span id="seconds">0</span><div class="label">Seconds</div></div>
+      <!-- <div><span id="seconds">0</span><div class="label">Seconds</div></div> -->
     </div>
 
     <div class="zoom-image">
@@ -187,7 +225,7 @@
   </audio>
 
   <script>
-    const weddingDate = new Date(2025, 10, 26, 23, 0, 0);
+    const weddingDate = new Date(2025, 10, 26, 23, 0);
     const msgElement = document.getElementById("event-message");
 
     function updateCountdown() {
@@ -209,7 +247,7 @@
       }
 
       const diff = targetDate - now;
-      const seconds = Math.floor((diff / 1000) % 60);
+      //const seconds = Math.floor((diff / 1000) % 60);
       const minutes = Math.floor((diff / 1000 / 60) % 60);
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -217,7 +255,7 @@
       document.getElementById("days").textContent = days;
       document.getElementById("hours").textContent = hours;
       document.getElementById("minutes").textContent = minutes;
-      document.getElementById("seconds").textContent = seconds;
+      //document.getElementById("seconds").textContent = seconds;
     }
 
     updateCountdown();
